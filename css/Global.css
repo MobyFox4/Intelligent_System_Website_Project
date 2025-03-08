@@ -1,0 +1,65 @@
+/* ตั้งค่าธีมมืด */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1e1e1e;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* กล่องข้อมูล */
+.content-box {
+    background-color: #1e1e1e;
+    border: 2px solid #ffffff;
+    padding: 20px;
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* ข้อความ */
+.text {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* กล่องรูป */
+.image-box {
+    width: 300px;
+    height: 200px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    margin: 0 auto;
+}

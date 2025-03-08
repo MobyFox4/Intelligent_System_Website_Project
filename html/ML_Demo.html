@@ -1,11 +1,255 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mushroom Edibility Prediction</title>
+    <link rel="stylesheet" href="/css/ML_Demo.css">
 </head>
 <body>
-    
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="ML.html">Machine Learning</a></li>
+            <li><a href="CNN.html">Neural Network</a></li>
+            <li><a href="ML_Demo.html">Machine Learning Demo</a></li>
+            <li><a href="CNN_Demo.html">Neural Network Demo</a></li>
+        </ul>
+    </nav>
+
+    <!-- ส่วนหัว -->
+    <h1 class="title">Is mushroom edible?</h1>
+
+    <!-- กล่อง KNN -->
+    <div class="model-box">
+        <h2>K-Nearest Neighbor (KNN)</h2>
+        <div class="container">
+            <div class="form-container">
+                <form id="mushroom-form">
+                    <fieldset>
+                        <div class="grid">
+                            <label>Cap-diameter (cm): <input type="number" step="0.1"></label>
+                            <label>Cap-shape:
+                                <select>
+                                    <option value="b">Bell</option>
+                                    <option value="c">Conical</option>
+                                    <option value="x">Convex</option>
+                                    <option value="f">Flat</option>
+                                    <option value="s">Sunken</option>
+                                    <option value="p">Spherical</option>
+                                </select>
+                            </label>
+                            <label>Cap-surface:
+                                <select>
+                                    <option value="i">Fibrous</option>
+                                    <option value="g">Grooves</option>
+                                    <option value="y">Scaly</option>
+                                    <option value="s">Smooth</option>
+                                </select>
+                            </label>
+                            <label>Cap-color:
+                                <select>
+                                    <option value="n">Brown</option>
+                                    <option value="b">Buff</option>
+                                    <option value="g">Gray</option>
+                                    <option value="r">Green</option>
+                                </select>
+                            </label>
+                            
+                            <label>Does bruise/bleed:
+                                <select>
+                                    <option value="t">Yes</option>
+                                    <option value="f">No</option>
+                                </select>
+                            </label>
+                            <label>Gill-attachment:
+                                <select>
+                                    <option value="a">Adnate</option>
+                                    <option value="x">Adnexed</option>
+                                    <option value="d">Decurrent</option>
+                                </select>
+                            </label>
+                            <label>Gill-spacing:
+                                <select>
+                                    <option value="c">Close</option>
+                                    <option value="d">Distant</option>
+                                    <option value="f">None</option>
+                                </select>
+                            </label>
+                            <label>Gill-color:
+                                <select>
+                                    <option value="f">None</option>
+                                    <option value="n">Brown</option>
+                                    <option value="b">Buff</option>
+                                    <option value="g">Gray</option>
+                                </select>
+                            </label>
+        
+                            <label>Stem-height (cm): <input type="number" step="0.1"></label>
+                            <label>Stem-width (mm): <input type="number" step="0.1"></label>
+                            <label>Stem-color:
+                                <select>
+                                    <option value="n">Brown</option>
+                                    <option value="b">Buff</option>
+                                    <option value="g">Gray</option>
+                                </select>
+                            </label>
+                            <label>Has ring:
+                                <select>
+                                    <option value="t">Yes</option>
+                                    <option value="f">No</option>
+                                </select>
+                            </label>
+                            <label>Ring-type:
+                                <select>
+                                    <option value="f">None</option>
+                                    <option value="c">Cobwebby</option>
+                                    <option value="e">Evanescent</option>
+                                </select>
+                            </label>
+                            <label>Habitat:
+                                <select>
+                                    <option value="g">Grasses</option>
+                                    <option value="l">Leaves</option>
+                                    <option value="m">Meadows</option>
+                                </select>
+                            </label>
+                            <label>Season:
+                                <select>
+                                    <option value="s">Spring</option>
+                                    <option value="u">Summer</option>
+                                    <option value="a">Autumn</option>
+                                </select>
+                            </label>
+                        </div>
+                    </fieldset>
+                </form>
+        
+                <button type="submit">Predict</button>
+            </div>
+        
+            <div class="result-container">
+                <h2>Result</h2>
+                <p class="result-text">-</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="model-box">
+        <h2>Random Forest</h2>
+        <div class="container">
+            <div class="form-container">
+                <form id="mushroom-form">
+                    <fieldset>
+                        <div class="grid">
+                            <label>Cap-diameter (cm): <input type="number" step="0.1"></label>
+                            <label>Cap-shape:
+                                <select>
+                                    <option value="b">Bell</option>
+                                    <option value="c">Conical</option>
+                                    <option value="x">Convex</option>
+                                    <option value="f">Flat</option>
+                                    <option value="s">Sunken</option>
+                                    <option value="p">Spherical</option>
+                                </select>
+                            </label>
+                            <label>Cap-surface:
+                                <select>
+                                    <option value="i">Fibrous</option>
+                                    <option value="g">Grooves</option>
+                                    <option value="y">Scaly</option>
+                                    <option value="s">Smooth</option>
+                                </select>
+                            </label>
+                            <label>Cap-color:
+                                <select>
+                                    <option value="n">Brown</option>
+                                    <option value="b">Buff</option>
+                                    <option value="g">Gray</option>
+                                    <option value="r">Green</option>
+                                </select>
+                            </label>
+                            
+                            <label>Does bruise/bleed:
+                                <select>
+                                    <option value="t">Yes</option>
+                                    <option value="f">No</option>
+                                </select>
+                            </label>
+                            <label>Gill-attachment:
+                                <select>
+                                    <option value="a">Adnate</option>
+                                    <option value="x">Adnexed</option>
+                                    <option value="d">Decurrent</option>
+                                </select>
+                            </label>
+                            <label>Gill-spacing:
+                                <select>
+                                    <option value="c">Close</option>
+                                    <option value="d">Distant</option>
+                                    <option value="f">None</option>
+                                </select>
+                            </label>
+                            <label>Gill-color:
+                                <select>
+                                    <option value="f">None</option>
+                                    <option value="n">Brown</option>
+                                    <option value="b">Buff</option>
+                                    <option value="g">Gray</option>
+                                </select>
+                            </label>
+        
+                            <label>Stem-height (cm): <input type="number" step="0.1"></label>
+                            <label>Stem-width (mm): <input type="number" step="0.1"></label>
+                            <label>Stem-color:
+                                <select>
+                                    <option value="n">Brown</option>
+                                    <option value="b">Buff</option>
+                                    <option value="g">Gray</option>
+                                </select>
+                            </label>
+                            <label>Has ring:
+                                <select>
+                                    <option value="t">Yes</option>
+                                    <option value="f">No</option>
+                                </select>
+                            </label>
+                            <label>Ring-type:
+                                <select>
+                                    <option value="f">None</option>
+                                    <option value="c">Cobwebby</option>
+                                    <option value="e">Evanescent</option>
+                                </select>
+                            </label>
+                            <label>Habitat:
+                                <select>
+                                    <option value="g">Grasses</option>
+                                    <option value="l">Leaves</option>
+                                    <option value="m">Meadows</option>
+                                </select>
+                            </label>
+                            <label>Season:
+                                <select>
+                                    <option value="s">Spring</option>
+                                    <option value="u">Summer</option>
+                                    <option value="a">Autumn</option>
+                                </select>
+                            </label>
+                        </div>
+                    </fieldset>
+                </form>
+        
+                <button type="submit">Predict</button>
+            </div>
+        
+            <div class="result-container">
+                <h2>Result</h2>
+                <p class="result-text">-</p>
+            </div>
+        </div>
+        
+
+    <script src="script.js"></script>
 </body>
 </html>
